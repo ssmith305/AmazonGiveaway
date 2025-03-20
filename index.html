@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon $1000 Gift Card Giveaway</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .amazon-logo {
+            width: 150px;
+        }
+        h1 {
+            color: #ff9900;
+        }
+        .countdown {
+            font-size: 18px;
+            font-weight: bold;
+            color: red;
+            margin: 10px 0;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #ff9900;
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .cta-button:hover {
+            background-color: #e68a00;
+        }
+        .small-text {
+            font-size: 12px;
+            color: gray;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" class="amazon-logo" alt="Amazon Logo">
+        <h1>Win a $1000 Amazon Gift Card!</h1>
+        <p>Enter now for a chance to win a free Amazon gift card.</p>
+        <p class="countdown">Hurry! Offer expires in: <span id="timer"></span></p>
+        <a href="[YOUR_CPA_LINK]" class="cta-button">Claim Your Gift Card</a>
+        <p class="small-text">*No purchase necessary. This is a limited-time offer.</p>
+    </div>
+
+    <script>
+        function countdown() {
+            let deadline = new Date();
+            deadline.setDate(deadline.getDate() + 7); // 7-day countdown
+            let x = setInterval(function () {
+                let now = new Date().getTime();
+                let t = deadline - now;
+                let days = Math.floor(t / (1000 * 60 * 60 * 24));
+                let hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((t % (1000 * 60)) / 1000);
+                document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+                if (t < 0) {
+                    clearInterval(x);
+                    document.getElementById("timer").innerHTML = "Expired";
+                }
+            }, 1000);
+        }
+        countdown();
+    </script>
+</body>
+</html>
